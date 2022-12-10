@@ -1,0 +1,8 @@
+commit-msg:
+  commands:
+    check-commits:
+      run: npx commitlint --edit
+post-merge:
+  install-deps-postmerge:
+    tags: frontend
+    run: npx install-deps-postmerge
