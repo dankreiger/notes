@@ -21,12 +21,6 @@
         "production": {}
       }
     },
-    "commit": {
-      "command": "npx cz"
-    },
-    "dev": {
-      "command": "npx nx run-many --target=serve"
-    },
     "serve": {
       "executor": "@nrwl/next:server",
       "defaultConfiguration": "development",

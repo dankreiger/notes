@@ -1,4 +1,3 @@
-export * from './lib/search-input';
-export * from './lib/shell';
-export * from './lib/topic-button';
-export * from './lib/user-menu';
+export * from './lib/atoms';
+export * from './lib/layout';
+export * from './lib/molecules';

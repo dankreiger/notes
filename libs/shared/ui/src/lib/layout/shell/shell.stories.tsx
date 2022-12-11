@@ -9,10 +9,14 @@ import {
 } from '@heroicons/react/24/outline';
 import { withTests } from '@storybook/addon-jest';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import results from '../../../.jest-test-results.json';
-import { UserMenu } from '../user-menu/user-menu';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import results from '../../../../.jest-test-results.json';
+import { Heading } from '../../atoms/heading/heading';
+import { TextInput } from '../../molecules/text-input';
+import { UserMenu } from '../../molecules/user-menu';
 import { ShellColors } from './internal';
 import { Shell } from './shell';
+
 const Story: ComponentMeta<typeof Shell> = {
   component: Shell,
   title: 'Design System/Layout/Shell',
@@ -49,21 +53,30 @@ const sidebarNavigationItems = [
 
 /*********************************************************************** */
 
-const Template: ComponentStory<typeof Shell> = (args) => <Shell {...args} />;
+const Template: ComponentStory<typeof Shell> = (args) => {
+  // just to demonstrate a real input
+  // (TextInput component is dumb and only a style wrapper for the native HTML input)
+  const { onSearchChange = () => undefined } = args;
+  const [searchValue, setSearchValue] = useState('');
+  const handleSearchChange = useCallback<
+    (e: ChangeEvent<HTMLInputElement>) => void
+  >((e) => setSearchValue(e.target.value), []);
 
-export const Basic = Template.bind({});
-Basic.args = {
-  logoAlt: "My Company's Logo",
-  logoSrc: 'https://tailwindui.com/img/logos/workflow-mark.svg?color=white',
-  sidebarNavigationItems,
-  primaryColumn: <h1 className="p-4">Hello primary puppy</h1>,
-  secondaryColumn: <h2 className="p-4">Hello secondary puppy</h2>,
-  variant: 'slate',
+  useEffect(() => onSearchChange(searchValue), [searchValue, onSearchChange]);
+
+  return (
+    <Shell
+      {...args}
+      headerLeft={
+        <TextInput onChange={handleSearchChange} value={searchValue} />
+      }
+    />
+  );
 };
 
-export const WithHeaderItems = Template.bind({});
-WithHeaderItems.args = {
-  headerItems: [
+export const MultiColumn = Template.bind({});
+MultiColumn.args = {
+  headerRight: [
     <UserMenu
       key="1"
       focusVariant="slate"
@@ -81,16 +94,27 @@ WithHeaderItems.args = {
     </button>,
   ],
   logoAlt: "My Company's Logo",
-  logoSrc: 'https://tailwindui.com/img/logos/workflow-mark.svg?color=white',
+  logoSrc:
+    'https://www.loudly.com/wp-content/uploads/2021/01/Loudly_type_logo_wht.png',
   sidebarNavigationItems,
-  primaryColumn: <h1 className="p-4">Hello primary puppy</h1>,
-  secondaryColumn: <h2 className="p-4">Hello secondary puppy</h2>,
+
+  primaryColumn: (
+    <div className="p-4">
+      <Heading>Primary Content</Heading>
+    </div>
+  ),
+  secondaryColumn: (
+    <div className="p-4">
+      <Heading Tag="h3">Secondary Content</Heading>
+    </div>
+  ),
+  onSearchChange: (value) => console.log('search value', value),
   variant: 'slate',
 };
 
-export const NoSecondaryColumn = Template.bind({});
-NoSecondaryColumn.args = {
-  headerItems: [
+export const SingleColumn = Template.bind({});
+SingleColumn.args = {
+  headerRight: [
     <UserMenu
       key="1"
       focusVariant="slate"
@@ -108,8 +132,15 @@ NoSecondaryColumn.args = {
     </button>,
   ],
   logoAlt: "My Company's Logo",
-  logoSrc: 'https://tailwindui.com/img/logos/workflow-mark.svg?color=white',
-  primaryColumn: <h1 className="p-4">Hello primary puppy</h1>,
+  logoSrc:
+    'https://www.loudly.com/wp-content/uploads/2021/01/Loudly_type_logo_wht.png',
+
+  primaryColumn: (
+    <div className="p-4">
+      <Heading>Primary Content</Heading>
+    </div>
+  ),
   sidebarNavigationItems,
+  onSearchChange: (value) => console.log('search value', value),
   variant: 'slate',
 };

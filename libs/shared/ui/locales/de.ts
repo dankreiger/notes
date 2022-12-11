@@ -1,5 +1,4 @@
 const translation = {
-  hello: 'Hallo',
-  world: 'Welt',
+  heading: 'Hallo Welpe!',
 };
 export const de = { translation } as const;

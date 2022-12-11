@@ -1,6 +1,6 @@
 import { withTests } from '@storybook/addon-jest';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import results from '../../../.jest-test-results.json';
+import results from '../../../../.jest-test-results.json';
 import { UserMenuColors } from './internal';
 import { UserMenu } from './user-menu';
 

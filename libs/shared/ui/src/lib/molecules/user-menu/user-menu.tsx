@@ -1,18 +1,18 @@
 import { Menu, Transition } from '@headlessui/react';
-import { Fragment } from 'react';
-import { classNames } from '../_utils';
+import { FC, Fragment } from 'react';
+import { classNames } from '../../_utils';
 import { UserMenuColors, UserMenuProps } from './internal';
 const userNavigation = [
   { name: 'Your Profile', href: '#' },
   { name: 'Sign out', href: '#' },
 ] as const;
 
-export const UserMenu = ({
+export const UserMenu: FC<UserMenuProps> = ({
   focusVariant = 'slate',
   imgSrc,
   imgAlt,
   screenReaderText,
-}: UserMenuProps) => (
+}) => (
   <div className="flex justify-end">
     <Menu as="div" className="relative flex-shrink-0">
       <div>

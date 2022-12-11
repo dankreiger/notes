@@ -1,7 +1,7 @@
 import { withTests } from '@storybook/addon-jest';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import { useState } from 'react';
-import results from '../../../.jest-test-results.json';
+import results from '../../../../.jest-test-results.json';
 import { TopicButton } from './topic-button';
 
 const Story: ComponentMeta<typeof TopicButton> = {

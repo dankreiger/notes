@@ -14,14 +14,13 @@
 */
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3BottomLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { ChangeEvent, Fragment, useCallback, useEffect, useState } from 'react';
-import { SearchInput } from '../search-input';
-import { classNames } from '../_utils';
+import { FC, Fragment, useState } from 'react';
+import { classNames } from '../../_utils';
 import { ShellColors, ShellProps } from './internal';
 
-export const Shell = ({
-  headerItems,
-  onSearchChange = () => undefined,
+export const Shell: FC<ShellProps> = ({
+  headerLeft,
+  headerRight,
   logoAlt,
   logoSrc,
   sidebarNavigationItems = [],
@@ -33,14 +32,8 @@ export const Shell = ({
     primaryHeading: 'Main content',
   },
   variant = 'slate',
-}: ShellProps) => {
+}) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const handleSearchChange = useCallback<
-    (e: ChangeEvent<HTMLInputElement>) => void
-  >((e) => setSearchValue(e.target.value), []);
-
-  useEffect(() => onSearchChange(searchValue), [onSearchChange, searchValue]);
 
   return (
     <>
@@ -198,14 +191,9 @@ export const Shell = ({
                 <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
               </button>
               <div className="flex flex-1 justify-between px-4 sm:px-6">
-                <div className="flex flex-1">
-                  <SearchInput
-                    onChange={handleSearchChange}
-                    value={searchValue}
-                  />
-                </div>
+                <div className="flex flex-1">{headerLeft}</div>
                 <div className="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-                  {headerItems}
+                  {headerRight}
                 </div>
               </div>
             </div>

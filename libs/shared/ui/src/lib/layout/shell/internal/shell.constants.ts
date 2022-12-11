@@ -1,4 +1,4 @@
-import type { ShellColorRecord } from './shell.types';
+import { ThemeColorRecord } from '../../../theme';
 
 /**
  * Static lookup table so component classes
@@ -8,7 +8,7 @@ import type { ShellColorRecord } from './shell.types';
  *
  * @see https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html
  */
-export const ShellColors: ShellColorRecord = {
+export const ShellColors: ThemeColorRecord = {
   slate: {
     bg: 'bg-slate-700',
     button: 'bg-slate-600 hover:bg-slate-700',
