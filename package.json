@@ -5,6 +5,8 @@
   "scripts": {
     "commit": "nx commit",
     "dev": "nx dev",
+    "format": "nx format",
+    "lint": "nx run-many --target=lint --all --parallel",
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test"
