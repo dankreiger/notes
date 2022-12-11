@@ -8,9 +8,9 @@ const userNavigation = [
 ] as const;
 
 export const UserMenu = ({
+  focusVariant = 'slate',
   imgSrc,
   imgAlt,
-  focusVariant,
   screenReaderText,
 }: UserMenuProps) => (
   <div className="flex justify-end">

@@ -1,3 +1,5 @@
+import { ReactNode, SVGProps } from 'react';
+
 /**
  * Color variants for the Shell component
  */
@@ -24,9 +26,50 @@ export type ShellColorRecord<C extends ShellColor = ShellColor> = Record<
   }
 >;
 
-/**
- * Props for the Shell component
- */
 export type ShellProps = {
+  /**
+   * Items to render in the header
+   */
+  readonly headerItems?: ReactNode[];
+  /**
+   * Alt tag for the logo
+   */
+  readonly logoAlt?: string;
+  /**
+   * Image src pointing to the logo
+   */
+  readonly logoSrc?: string;
+  /**
+   * Callback for when the search input changes
+   */
+  readonly onSearchChange?: (value: string) => void;
+  /**
+   * Main content
+   */
+  readonly primaryColumn: ReactNode;
+  /**
+   * Secondary column (hidden on smaller screens)
+   */
+  readonly secondaryColumn?: ReactNode;
+  /**
+   * Screen reader texts
+   */
+  readonly screenReaderTexts?: {
+    readonly openSidebar?: string;
+    readonly closeSidebar?: string;
+    readonly primaryHeading?: string;
+  };
+  /**
+   * Items for the sidebar navigation
+   */
+  readonly sidebarNavigationItems?: {
+    name: string;
+    href: string;
+    icon: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+    current: boolean;
+  }[];
+  /**
+   * Variant color for the shell
+   */
   readonly variant: ShellColor;
 };

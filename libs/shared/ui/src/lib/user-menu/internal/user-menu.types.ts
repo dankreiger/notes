@@ -24,7 +24,10 @@ export type UserMenuColorRecord<C extends UserMenuColor = UserMenuColor> =
  * Props for the UserMenu component
  */
 export type UserMenuProps = {
-  readonly focusVariant: UserMenuColor;
+  /**
+   * The color variant around the UserMenu avatar when focused
+   */
+  readonly focusVariant?: UserMenuColor;
   readonly imgAlt: string;
   readonly imgSrc: string;
   readonly screenReaderText: string;

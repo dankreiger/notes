@@ -13,38 +13,34 @@
   ```
 */
 import { Dialog, Transition } from '@headlessui/react';
-import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import {
-  Bars3BottomLeftIcon,
-  CogIcon,
-  HomeIcon,
-  PhotoIcon,
-  PlusIcon,
-  RectangleStackIcon,
-  Squares2X2Icon,
-  UserGroupIcon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
-import { Fragment, useState } from 'react';
-import { UserMenu } from '../user-menu';
+import { Bars3BottomLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { ChangeEvent, Fragment, useCallback, useEffect, useState } from 'react';
+import { SearchInput } from '../search-input';
 import { classNames } from '../_utils';
 import { ShellColors, ShellProps } from './internal';
 
-const sidebarNavigation = [
-  { name: 'Home', href: '#', icon: HomeIcon, current: false },
-  { name: 'All Files', href: '#', icon: Squares2X2Icon, current: false },
-  { name: 'Photos', href: '#', icon: PhotoIcon, current: true },
-  { name: 'Shared', href: '#', icon: UserGroupIcon, current: false },
-  { name: 'Albums', href: '#', icon: RectangleStackIcon, current: false },
-  { name: 'Settings', href: '#', icon: CogIcon, current: false },
-];
-const userNavigation = [
-  { name: 'Your Profile', href: '#' },
-  { name: 'Sign out', href: '#' },
-];
-
-export const Shell = ({ variant = 'slate' }: ShellProps) => {
+export const Shell = ({
+  headerItems,
+  onSearchChange = () => undefined,
+  logoAlt,
+  logoSrc,
+  sidebarNavigationItems = [],
+  primaryColumn,
+  secondaryColumn,
+  screenReaderTexts = {
+    openSidebar: 'Open sidebar',
+    closeSidebar: 'Close sidebar',
+    primaryHeading: 'Main content',
+  },
+  variant = 'slate',
+}: ShellProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const handleSearchChange = useCallback<
+    (e: ChangeEvent<HTMLInputElement>) => void
+  >((e) => setSearchValue(e.target.value), []);
+
+  useEffect(() => onSearchChange(searchValue), [onSearchChange, searchValue]);
 
   return (
     <>
@@ -63,14 +59,10 @@ export const Shell = ({ variant = 'slate' }: ShellProps) => {
         >
           <div className="flex w-full flex-col items-center py-6">
             <div className="flex flex-shrink-0 items-center">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=white"
-                alt="Your Company"
-              />
+              <img className="h-8 w-auto" src={logoSrc} alt={logoAlt} />
             </div>
             <div className="mt-6 w-full flex-1 space-y-1 px-2">
-              {sidebarNavigation.map((item) => (
+              {sidebarNavigationItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
@@ -145,21 +137,19 @@ export const Shell = ({ variant = 'slate' }: ShellProps) => {
                           className="h-6 w-6 text-white"
                           aria-hidden="true"
                         />
-                        <span className="sr-only">Close sidebar</span>
+                        <span className="sr-only">
+                          {screenReaderTexts.closeSidebar}
+                        </span>
                       </button>
                     </div>
                   </Transition.Child>
                   <div className="flex flex-shrink-0 items-center px-4">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://tailwindui.com/img/logos/mark.svg?color=white"
-                      alt="Your Company"
-                    />
+                    <img className="h-8 w-auto" src={logoSrc} alt={logoAlt} />
                   </div>
                   <div className="mt-5 h-0 flex-1 overflow-y-auto px-2">
                     <nav className="flex h-full flex-col">
                       <div className="space-y-1">
-                        {sidebarNavigation.map((item) => (
+                        {sidebarNavigationItems.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
@@ -204,47 +194,18 @@ export const Shell = ({ variant = 'slate' }: ShellProps) => {
                 className={`border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset ${ShellColors[variant].buttonFocus} md:hidden`}
                 onClick={() => setMobileMenuOpen(true)}
               >
-                <span className="sr-only">Open sidebar</span>
+                <span className="sr-only">{screenReaderTexts.openSidebar}</span>
                 <Bars3BottomLeftIcon className="h-6 w-6" aria-hidden="true" />
               </button>
               <div className="flex flex-1 justify-between px-4 sm:px-6">
                 <div className="flex flex-1">
-                  <form className="flex w-full md:ml-0" action="#" method="GET">
-                    <label htmlFor="search-field" className="sr-only">
-                      Search all files
-                    </label>
-                    <div className="relative w-full text-gray-400 focus-within:text-gray-600">
-                      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center">
-                        <MagnifyingGlassIcon
-                          className="h-5 w-5 flex-shrink-0"
-                          aria-hidden="true"
-                        />
-                      </div>
-                      <input
-                        name="search-field"
-                        id="search-field"
-                        className="h-full w-full border-transparent py-2 pl-8 pr-3 text-base text-gray-900 placeholder-gray-500 focus:border-transparent focus:placeholder-gray-400 focus:outline-none focus:ring-0"
-                        placeholder="Search"
-                        type="search"
-                      />
-                    </div>
-                  </form>
+                  <SearchInput
+                    onChange={handleSearchChange}
+                    value={searchValue}
+                  />
                 </div>
                 <div className="ml-2 flex items-center space-x-4 sm:ml-6 sm:space-x-6">
-                  <UserMenu
-                    focusVariant={variant}
-                    imgAlt="Dan Kreiger"
-                    imgSrc="https://avatars.githubusercontent.com/u/5302071?v=4"
-                    screenReaderText="Open user menu"
-                  />
-
-                  <button
-                    type="button"
-                    className={`flex items-center justify-center rounded-full p-1 text-white ${ShellColors[variant].button} focus:outline-none focus:ring-2 ${ShellColors[variant].buttonFocus} focus:ring-offset-2`}
-                  >
-                    <PlusIcon className="h-6 w-6" aria-hidden="true" />
-                    <span className="sr-only">Add file</span>
-                  </button>
+                  {headerItems}
                 </div>
               </div>
             </div>
@@ -259,16 +220,18 @@ export const Shell = ({ variant = 'slate' }: ShellProps) => {
                 className="flex h-full min-w-0 flex-1 flex-col lg:order-last"
               >
                 <h1 id="primary-heading" className="sr-only">
-                  Photos
+                  {screenReaderTexts.primaryHeading}
                 </h1>
-                {/* Your content */}
+                {primaryColumn}
               </section>
             </main>
 
             {/* Secondary column (hidden on smaller screens) */}
-            <aside className="hidden w-96 overflow-y-auto border-l border-gray-200 bg-white lg:block">
-              {/* Your content */}
-            </aside>
+            {secondaryColumn && (
+              <aside className="hidden w-96 overflow-y-auto border-l border-gray-200 bg-white lg:block">
+                {secondaryColumn}
+              </aside>
+            )}
           </div>
         </div>
       </div>
