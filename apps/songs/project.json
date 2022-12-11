@@ -21,6 +21,9 @@
         "production": {}
       }
     },
+    "commit": {
+      "command": "npx cz"
+    },
     "dev": {
       "command": "npx nx run-many --target=serve"
     },

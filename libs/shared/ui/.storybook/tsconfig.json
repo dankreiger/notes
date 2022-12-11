@@ -3,7 +3,8 @@
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "outDir": "",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "resolveJsonModule": true
   },
   "files": [
     "../../../../node_modules/@nrwl/react/typings/styled-jsx.d.ts",
@@ -22,6 +23,7 @@
     "../src/**/*.stories.jsx",
     "../src/**/*.stories.tsx",
     "../src/**/*.stories.mdx",
-    "*.js"
+    "*.js",
+    "*.tsx"
   ]
 }

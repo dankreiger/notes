@@ -1,19 +1,22 @@
 import { withTests } from '@storybook/addon-jest';
-import { Meta, Story } from '@storybook/react';
-import React, { useState } from 'react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
+import { useState } from 'react';
 import results from '../../../.jest-test-results.json';
-import { TopicButton, TopicButtonProps } from './topic-button';
+import { TopicButton } from './topic-button';
 
-export default {
+const Story: ComponentMeta<typeof TopicButton> = {
   component: TopicButton,
-  title: 'TopicButton',
+  title: 'Design System/Atoms/TopicButton',
   decorators: [withTests({ results })],
   argTypes: {
     onClick: { action: 'onClick executed!' },
   },
-} as Meta;
+};
+export default Story;
 
-const Template: Story<TopicButtonProps> = (args) => {
+/*********************************************************************** */
+
+const Template: ComponentStory<typeof TopicButton> = (args) => {
   const [clickedTopic, setClickedTopic] = useState<string | null>(null);
   return (
     <div className="bg-gray-100 p-20">

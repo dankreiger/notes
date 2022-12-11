@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 export interface TopicButtonProps {
   topicName: 'nextjs' | 'react';
   onClick?: (topicName: string) => void;
 }
 
-export function TopicButton(props: TopicButtonProps) {
+export const TopicButton: FC<TopicButtonProps> = (props: TopicButtonProps) => {
   const [icon, setIcon] = useState('');
 
   useEffect(() => {
@@ -38,6 +38,6 @@ export function TopicButton(props: TopicButtonProps) {
       </div>
     </div>
   );
-}
+};
 
 export default TopicButton;
