@@ -26,34 +26,25 @@
 
 There are more connections than are actually happening in runtime. It would be nice if nx could generate a diagram of the runtime connections.
 The lines also include type-only imports. A lot of these cannot be put into a separate repo since the types are declared via `typeof` on a runtime import.
-TRPC is a good example of this. The magic of TRPC is the automatic sharing of types between the client and server. This is done by using `typeof` on a runtime import. Declaring this types separately would be really hard.
 
 - The app is called songs.
-
 - It has a feature library with some packages.
 
-<div style="display: flex;">
-  <div style="margin-right: 5px;">
-    <h3>Grouped View</h3>
-    <img src="./graphs/graph_grouped.png" alt="graph" width="200" height="130" />
-  </div>
-  <div style="margin-left: 5px;">
-    <h3>Ungrouped View</h3>
-    <img src="./graphs/graph_ungrouped.png" alt="graph" width="200" height="130" />
-  </div>
-</div>
-
-## Notes
-
-- Tailwind is more performant than css-in-js, but the verbose syntax is hard to get used to.
-- Naming stuff in a monorepo is hard.
-- I tried TRPC. I think I like it, but they could make their API a little more intuitive (too many cross imports).
+[![graph](./graphs/graph_ungrouped.png)](./graphs/graph_ungrouped.png)
 
 ## TODO
 
 - Add i18n routing into Next.js app
 - Write out e2e / integration tests
 - Add perf checks / code coverage to CI/CD
+
+## Notes
+
+- Tailwind is more performant than css-in-js, but the verbose syntax is hard to get used to.
+- Naming stuff in a monorepo is hard.
+- I tried TRPC. I think I like it, but they could make their API a little more intuitive (too many cross imports).
+- The security vulnerabilities upon running `npm install` are from storybook.
+- The deprecation outputs upon running the `shared-ui` storybook are from storybook.
 
 ## Getting Started
 
@@ -63,11 +54,6 @@ npm run dev
 
 # follow the prompt
 ```
-
-## Note
-
-- The security vulnerabilities upon running `npm install` are from storybook.
-- The deprecation outputs upon running the `shared-ui` storybook are from storybook.
 
 These points cannot be easily mitigated until storybook updates their dependencies.
 
