@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "npmScope": "hear",
+  "npmScope": "notes",
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/nx-cloud",
@@ -9,10 +9,10 @@
           "build",
           "lint",
           "test",
-          "e2e",
-          "build-storybook"
+          "build-storybook",
+          "e2e"
         ],
-        "accessToken": "MjYwOTk3YzktMmE3Zi00YzMwLThmZDUtODM5MzMzZDJhYzZmfHJlYWQtd3JpdGU="
+        "accessToken": "ZTJhZDRlN2EtYWI1My00MDc2LWJkODgtZTIwMDcwNjQwYjM4fHJlYWQtd3JpdGU="
       }
     }
   },

@@ -1,4 +1,4 @@
-import { SongSchema } from '@hear/songs/schemas';
+import { SongSchema } from '@notes/songs/schemas';
 import { Reducer } from 'react';
 
 type LikeCountReducer = Reducer<

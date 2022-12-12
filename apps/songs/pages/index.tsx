@@ -1,5 +1,5 @@
-import { AudioPlayer, Heading, Theme, ThemeVariant } from '@hear/shared/ui';
-import { songsAppTrpcClient as trpc } from '@hear/songs/trpc-client';
+import { AudioPlayer, Heading, Theme, ThemeVariant } from '@notes/shared/ui';
+import { songsAppTrpcClient as trpc } from '@notes/songs/trpc-client';
 import {
   ChatBubbleLeftIcon,
   HandThumbUpIcon,

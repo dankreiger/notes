@@ -1,4 +1,4 @@
-import { SongSchema, songSchema } from '@hear/songs/schemas';
+import { SongSchema, songSchema } from '@notes/songs/schemas';
 import { z } from 'zod';
 import { router } from '../../shared';
 import { fetcher, getError } from '../../utils';

@@ -4,8 +4,8 @@ import {
   Shell,
   ThemeVariant,
   ThemeVariantList,
-} from '@hear/shared/ui';
-import { songsAppTrpcClient } from '@hear/songs/trpc-client';
+} from '@notes/shared/ui';
+import { songsAppTrpcClient } from '@notes/songs/trpc-client';
 import { MusicalNoteIcon } from '@heroicons/react/24/outline';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
