@@ -1,5 +1,5 @@
 {
-  "name": "hear",
+  "name": "notes",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -107,5 +107,5 @@
     }
   },
   "readme": "ERROR: No README data found!",
-  "_id": "hear@0.0.0"
+  "_id": "notes@0.0.0"
 }

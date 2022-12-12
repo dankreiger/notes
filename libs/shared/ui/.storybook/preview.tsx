@@ -1,4 +1,4 @@
-import { initI18n } from '@hear/shared/i18n';
+import { initI18n } from '@notes/shared/i18n';
 import type { DecoratorFn } from '@storybook/react';
 import { Suspense, useEffect } from 'react';
 import { I18nextProvider } from 'react-i18next';

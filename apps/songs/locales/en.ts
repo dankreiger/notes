@@ -1,4 +1,4 @@
-import { ThemeVariant } from '@hear/shared/ui';
+import { ThemeVariant } from '@notes/shared/ui';
 
 const translation = {
   document: {

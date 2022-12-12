@@ -1,4 +1,4 @@
-import type { AppRouter } from '@hear/songs/trpc-server';
+import type { AppRouter } from '@notes/songs/trpc-server';
 import { httpBatchLink } from '@trpc/client';
 import { createTRPCNext } from '@trpc/next';
 import { getBaseUrl } from './utils/getBaseUrl';

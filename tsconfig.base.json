@@ -17,11 +17,11 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hear/shared/i18n": ["libs/shared/i18n/src/index.ts"],
-      "@hear/shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@hear/songs/schemas": ["libs/songs/schemas/src/index.ts"],
-      "@hear/songs/trpc-client": ["libs/songs/trpc-client/src/index.ts"],
-      "@hear/songs/trpc-server": ["libs/songs/trpc-server/src/index.ts"]
+      "@notes/shared/i18n": ["libs/shared/i18n/src/index.ts"],
+      "@notes/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@notes/songs/schemas": ["libs/songs/schemas/src/index.ts"],
+      "@notes/songs/trpc-client": ["libs/songs/trpc-client/src/index.ts"],
+      "@notes/songs/trpc-server": ["libs/songs/trpc-server/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

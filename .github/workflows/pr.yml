@@ -16,7 +16,7 @@ jobs:
           echo SONGS_API_KEY=${{ secrets.SONGS_API_KEY }} >> .env
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - uses: mansagroup/nrwl-nx-action@v3
@@ -28,4 +28,7 @@ jobs:
         if: ${{ github.actor == 'dankreiger' }}
       - name: Deploy chromatic
         run: npx nx run shared-ui:deploy-storybook
+        if: ${{ github.actor == 'dankreiger' }}
+      - name: Deploy storybook
+        run: npx surge --project ./dist/storybook/shared-ui --domain fluttering-can.surge.sh
         if: ${{ github.actor == 'dankreiger' }}

@@ -1,4 +1,4 @@
-import { initI18n } from '@hear/shared/i18n';
+import { initI18n } from '@notes/shared/i18n';
 import type { i18n } from 'react-i18next';
 import { de, en } from './locales';
 
