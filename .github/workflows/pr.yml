@@ -3,7 +3,7 @@ on:
   pull_request:
 
 jobs:
-  main:
+  pr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,3 +22,10 @@ jobs:
       - uses: mansagroup/nrwl-nx-action@v3
         with:
           targets: lint,build,test
+
+      - name: Build storybook
+        run: npx nx run shared-ui:build-storybook
+        if: ${{ github.actor == 'dankreiger' }}
+      - name: Deploy chromatic
+        run: npx nx run shared-ui:deploy-storybook
+        if: ${{ github.actor == 'dankreiger' }}

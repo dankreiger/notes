@@ -1,4 +1,4 @@
-name: main
+name: Main
 on:
   push:
     branches:
@@ -27,8 +27,3 @@ jobs:
 
       - name: Run affected apps/libs build
         run: npx nx affected --target=build --parallel=3
-
-      - name: Deploy storybook if there are changes
-        run: |
-          [[ -f dist/storybook/shared-ui/index.html ]] &&
-          npx chromatic --storybook-build-dir=dist/storybook/shared-ui

@@ -17,6 +17,7 @@ export const ButtonGroup: FC<ButtonGroupProps> = ({
       <div
         className="isolate rounded-md shadow-sm hidden sm:inline-flex"
         role="group"
+        data-testid="button-group"
       >
         {list.map((item, idx) => (
           <button

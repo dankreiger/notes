@@ -79,7 +79,7 @@
       }
     },
     "deploy-storybook": {
-      "command": "npx chromatic --storybook-build-dir=dist/storybook/shared-ui"
+      "command": "npx chromatic --storybook-build-dir=dist/storybook/shared-ui --auto-accept-changes"
     }
   }
 }

@@ -41,9 +41,6 @@ Thumbs.db
 # Next.js
 .next
 
-# Generated jest test output
-.jest-test-results.json
-
 # PWA
 **/public/workbox-*.js
 **/public/sw.js
