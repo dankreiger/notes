@@ -16,7 +16,7 @@ jobs:
           echo SONGS_API_KEY=${{ secrets.SONGS_API_KEY }} >> .env
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 16
       - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - uses: mansagroup/nrwl-nx-action@v3
