@@ -6,7 +6,11 @@
 
 ## Design System
 
-[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://www.chromatic.com/library?appId=639700cc5f8c73291feef9e9)
+[![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)](https://fluttering-can.surge.sh)
+
+## Chromatic Visual Regression Testing
+
+[![Chromatic](https://img.shields.io/badge/-Chromatic-aaa?style=for-the-badge&logo=chromatic&logoColor=white)](https://www.chromatic.com/setup?appId=6397af73df24145383361bcb)
 
 ## Tech Stack
 

@@ -29,3 +29,6 @@ jobs:
       - name: Deploy chromatic
         run: npx nx run shared-ui:deploy-storybook
         if: ${{ github.actor == 'dankreiger' }}
+      - name: Deploy storybook
+        run: npx surge --project ./dist/storybook/shared-ui --domain fluttering-can.surge.sh
+        if: ${{ github.actor == 'dankreiger' }}
