@@ -46,6 +46,8 @@ Thumbs.db
 **/public/sw.js
 **/public/fallback-*.js
 
+# Jest output
+.jest-test-results.json
 
 # secrets
 .env
