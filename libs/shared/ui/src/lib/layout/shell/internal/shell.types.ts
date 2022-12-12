@@ -1,5 +1,5 @@
-import { ReactNode, SVGProps } from 'react';
-import { ThemeColor } from '../../../theme';
+import type { ReactNode, SVGProps } from 'react';
+import type { ThemeVariant } from '../../../theme';
 
 export type ShellProps = {
   /**
@@ -18,10 +18,6 @@ export type ShellProps = {
    * Image src pointing to the logo (optional)
    */
   readonly logoSrc?: string;
-  /**
-   * Callback for when the search input changes (optional)
-   */
-  readonly onSearchChange?: (value: string) => void;
   /**
    * Main content
    */
@@ -50,5 +46,5 @@ export type ShellProps = {
   /**
    * Variant color for the shell (optional)
    */
-  readonly variant?: ThemeColor;
+  readonly variant?: ThemeVariant;
 };

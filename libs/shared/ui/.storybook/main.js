@@ -18,6 +18,7 @@ const main = {
     '@storybook/addon-jest',
     '@storybook/addon-a11y',
   ],
+  staticDirs: ['../assets'],
   webpackFinal: async (config, { configType }) => {
     // apply any global webpack configs that might have been specified in .storybook/main.js
     if (rootMain.webpackFinal) {

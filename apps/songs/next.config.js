@@ -9,7 +9,21 @@ const withPWA = require('next-pwa')({
 const plugins = [withPWA, withNx];
 
 module.exports = plugins.reduce((acc, next) => next(acc), {
+  i18n: {
+    locales: ['default', 'en', 'de'],
+    defaultLocale: 'default',
+    localeDetection: false,
+  },
   nx: {
     svgr: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'dz2l6nhikl0ua.cloudfront.net',
+        pathname: '/assets/cover_image/**',
+      },
+    ],
   },
 });

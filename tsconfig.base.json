@@ -4,6 +4,8 @@
     "rootDir": ".",
     "sourceMap": true,
     "declaration": false,
+    "strict": true,
+    "strictNullChecks": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -16,7 +18,10 @@
     "baseUrl": ".",
     "paths": {
       "@hear/shared/i18n": ["libs/shared/i18n/src/index.ts"],
-      "@hear/shared/ui": ["libs/shared/ui/src/index.ts"]
+      "@hear/shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@hear/songs/schemas": ["libs/songs/schemas/src/index.ts"],
+      "@hear/songs/trpc-client": ["libs/songs/trpc-client/src/index.ts"],
+      "@hear/songs/trpc-server": ["libs/songs/trpc-server/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

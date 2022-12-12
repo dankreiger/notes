@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // @ts-check
-const { exec, spawn } = require('child_process');
+const { spawn } = require('child_process');
 const inquirer = require('inquirer');
 const { execPromise, excludeE2E } = require('./_shared');
 
@@ -17,9 +17,7 @@ async function dev() {
       type: 'checkbox',
       name: 'projects',
       message: 'Which project would you like to serve?',
-      choices: JSON.parse(
-        await execPromise('npx nx print-affected')
-      ).projects.filter(excludeE2E),
+      choices: ['songs', 'shared-ui'],
     },
   ];
 

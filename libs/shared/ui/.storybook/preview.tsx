@@ -7,8 +7,11 @@ import { de, en } from '../locales';
 import './tailwind-imports.css';
 
 const i18n = initI18n({
-  en: en,
-  de: de,
+  resources: {
+    en: en,
+    de: de,
+  },
+  fallbackLng: 'en',
 });
 
 export const globalTypes = {

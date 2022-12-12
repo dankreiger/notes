@@ -1,0 +1,34 @@
+name: main
+on:
+  push:
+    branches:
+      - main
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: nrwl/nx-set-shas@v3
+      - run: npm ci
+
+      - run: npx nx workspace-lint
+      - run: npx nx format:check
+
+      - name: Run affected apps/libs lint
+        run: npx nx affected --target=lint --parallel=3
+
+      - name: Run affected apps/libs tests
+        run: npx nx affected --target=test --parallel=3 --ci --code-coverage
+
+      - name: Run affected apps/libs build
+        run: npx nx affected --target=build --parallel=3
+
+      - name: Deploy storybook if there are changes
+        run: |
+          [[ -f dist/storybook/shared-ui/index.html ]] &&
+          npx chromatic --storybook-build-dir=dist/storybook/shared-ui

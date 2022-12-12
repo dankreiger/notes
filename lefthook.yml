@@ -7,11 +7,13 @@ pre-commit:
       run: npm run format
     build:
       run: npm run build
+    test:
+      run: npm run test
 commit-msg:
   commands:
     check-commits:
       run: npx commitlint --edit
 post-merge:
   install-deps-postmerge:
-    tags: frontend
+    tags: deps
     run: npx install-deps-postmerge

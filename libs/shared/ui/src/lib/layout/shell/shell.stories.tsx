@@ -2,24 +2,26 @@ import {
   CogIcon,
   HomeIcon,
   PhotoIcon,
-  PlusIcon,
   RectangleStackIcon,
   Squares2X2Icon,
   UserGroupIcon,
 } from '@heroicons/react/24/outline';
 import { withTests } from '@storybook/addon-jest';
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import results from '../../../../.jest-test-results.json';
-import { Heading } from '../../atoms/heading/heading';
-import { TextInput } from '../../molecules/text-input';
-import { UserMenu } from '../../molecules/user-menu';
-import { ShellColors } from './internal';
+import {
+  Heading,
+  RoundIconButton,
+  TextInput,
+  UserMenu,
+} from '../../components';
+import { ThemeSize, ThemeVariant } from '../../theme';
 import { Shell } from './shell';
 
 const Story: ComponentMeta<typeof Shell> = {
   component: Shell,
-  title: 'Design System/Layout/Shell',
+  title: 'Design System/Layouts/Shell',
   parameters: {
     layout: 'fullscreen',
   },
@@ -34,9 +36,9 @@ const Story: ComponentMeta<typeof Shell> = {
   argTypes: {
     variant: {
       control: 'select',
-      defaultValue: 'slate',
+      defaultValue: ThemeVariant.slate,
       description: 'The color variant of the shell',
-      options: Object.keys(ShellColors),
+      options: Object.keys(ThemeVariant),
     },
   },
 };
@@ -56,46 +58,36 @@ const sidebarNavigationItems = [
 const Template: ComponentStory<typeof Shell> = (args) => {
   // just to demonstrate a real input
   // (TextInput component is dumb and only a style wrapper for the native HTML input)
-  const { onSearchChange = () => undefined } = args;
   const [searchValue, setSearchValue] = useState('');
   const handleSearchChange = useCallback<
     (e: ChangeEvent<HTMLInputElement>) => void
   >((e) => setSearchValue(e.target.value), []);
 
-  useEffect(() => onSearchChange(searchValue), [searchValue, onSearchChange]);
-
+  const { variant } = args;
   return (
     <Shell
       {...args}
       headerLeft={
         <TextInput onChange={handleSearchChange} value={searchValue} />
       }
+      headerRight={[
+        <UserMenu
+          key="1"
+          focusVariant={variant}
+          imgAlt="Dan Kreiger"
+          imgSrc="https://avatars.githubusercontent.com/u/5302071?v=4"
+          screenReaderText="Open user menu"
+        />,
+        <RoundIconButton key="2" padding={ThemeSize.xs} variant={variant} />,
+      ]}
     />
   );
 };
 
 export const MultiColumn = Template.bind({});
 MultiColumn.args = {
-  headerRight: [
-    <UserMenu
-      key="1"
-      focusVariant="slate"
-      imgAlt="Dan Kreiger"
-      imgSrc="https://avatars.githubusercontent.com/u/5302071?v=4"
-      screenReaderText="Open user menu"
-    />,
-    <button
-      key="2"
-      type="button"
-      className={`flex items-center justify-center rounded-full p-1 text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2`}
-    >
-      <PlusIcon className="h-6 w-6" aria-hidden="true" />
-      <span className="sr-only">Add file</span>
-    </button>,
-  ],
-  logoAlt: "My Company's Logo",
-  logoSrc:
-    'https://www.loudly.com/wp-content/uploads/2021/01/Loudly_type_logo_wht.png',
+  logoAlt: 'Logo',
+  logoSrc: '/logo.svg',
   sidebarNavigationItems,
 
   primaryColumn: (
@@ -108,32 +100,13 @@ MultiColumn.args = {
       <Heading Tag="h3">Secondary Content</Heading>
     </div>
   ),
-  onSearchChange: (value) => console.log('search value', value),
-  variant: 'slate',
+  variant: ThemeVariant.slate,
 };
 
 export const SingleColumn = Template.bind({});
 SingleColumn.args = {
-  headerRight: [
-    <UserMenu
-      key="1"
-      focusVariant="slate"
-      imgAlt="Dan Kreiger"
-      imgSrc="https://avatars.githubusercontent.com/u/5302071?v=4"
-      screenReaderText="Open user menu"
-    />,
-    <button
-      key="2"
-      type="button"
-      className={`flex items-center justify-center rounded-full p-1 text-white bg-slate-600 hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2`}
-    >
-      <PlusIcon className="h-6 w-6" aria-hidden="true" />
-      <span className="sr-only">Add file</span>
-    </button>,
-  ],
-  logoAlt: "My Company's Logo",
-  logoSrc:
-    'https://www.loudly.com/wp-content/uploads/2021/01/Loudly_type_logo_wht.png',
+  logoAlt: 'Logo',
+  logoSrc: '/logo.svg',
 
   primaryColumn: (
     <div className="p-4">
@@ -141,6 +114,5 @@ SingleColumn.args = {
     </div>
   ),
   sidebarNavigationItems,
-  onSearchChange: (value) => console.log('search value', value),
-  variant: 'slate',
+  variant: ThemeVariant.slate,
 };

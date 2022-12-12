@@ -1,0 +1,26 @@
+export const BASIC = {
+  id: '8d2861c7-eaa7-11e9-8f2a-022ed69f96e6',
+  name: 'musicmakerjamofficial',
+  artist_name: 'musicmakerjamofficial',
+  muted: false,
+  place: null,
+  country: null,
+  followers: 4,
+  follows: 0,
+  liked: 0,
+  releases: 18,
+  favorites: 0,
+  description: null,
+  profile_image_path:
+    'https://api-stg.jam-community.com/img/user_logo_default.png',
+  cover_image_path:
+    'https://api-stg.jam-community.com/img/user_bgr_default.png',
+  favorite_genres: [],
+  created: '2019-10-09T17:14:55+0200',
+  location: null,
+  social_accounts: [],
+  video_shout_out_count: 0,
+  external_songs_count: null,
+  external_videos_count: 0,
+  crews: [],
+};

@@ -15,8 +15,9 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3BottomLeftIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FC, Fragment, useState } from 'react';
-import { classNames } from '../../_utils';
-import { ShellColors, ShellProps } from './internal';
+import { Theme, ThemeVariant } from '../../theme';
+import { classNames } from '../../_shared';
+import { ShellProps } from './internal';
 
 export const Shell: FC<ShellProps> = ({
   headerLeft,
@@ -31,7 +32,7 @@ export const Shell: FC<ShellProps> = ({
     closeSidebar: 'Close sidebar',
     primaryHeading: 'Main content',
   },
-  variant = 'slate',
+  variant = ThemeVariant.slate,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -48,7 +49,7 @@ export const Shell: FC<ShellProps> = ({
       <div className="flex h-full">
         {/* Narrow sidebar */}
         <div
-          className={`hidden w-28 overflow-y-auto ${ShellColors[variant].bg} md:block`}
+          className={`hidden w-28 overflow-y-auto ${Theme[variant].bg} md:block`}
         >
           <div className="flex w-full flex-col items-center py-6">
             <div className="flex flex-shrink-0 items-center">
@@ -60,14 +61,14 @@ export const Shell: FC<ShellProps> = ({
                   key={item.name}
                   href={item.href}
                   className={classNames(
-                    ShellColors[variant][item.current ? 'linkActive' : 'link'],
+                    Theme[variant][item.current ? 'linkActive' : 'link'],
                     'transition duration-250 group w-full p-3 rounded-md flex flex-col items-center text-xs font-medium'
                   )}
                   aria-current={item.current ? 'page' : undefined}
                 >
                   <item.icon
                     className={classNames(
-                      item.current ? 'text-white' : ShellColors[variant].icon,
+                      item.current ? 'text-white' : Theme[variant].icon,
                       'h-6 w-6 transition duration-250'
                     )}
                     aria-hidden="true"
@@ -109,7 +110,7 @@ export const Shell: FC<ShellProps> = ({
                 leaveTo="-translate-x-full"
               >
                 <Dialog.Panel
-                  className={`relative flex w-full max-w-xs flex-1 flex-col ${ShellColors[variant].bg} pt-5 pb-4`}
+                  className={`relative flex w-full max-w-xs flex-1 flex-col ${Theme[variant].bg} pt-5 pb-4`}
                 >
                   <Transition.Child
                     as={Fragment}
@@ -148,8 +149,8 @@ export const Shell: FC<ShellProps> = ({
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? ShellColors[variant].linkActive
-                                : ShellColors[variant].link,
+                                ? Theme[variant].linkActive
+                                : Theme[variant].link,
                               'group py-2 px-3 rounded-md flex items-center text-sm font-medium'
                             )}
                             aria-current={item.current ? 'page' : undefined}
@@ -158,7 +159,7 @@ export const Shell: FC<ShellProps> = ({
                               className={classNames(
                                 item.current
                                   ? 'text-white'
-                                  : ShellColors[variant].icon,
+                                  : Theme[variant].icon,
                                 'mr-3 h-6 w-6'
                               )}
                               aria-hidden="true"
@@ -184,7 +185,7 @@ export const Shell: FC<ShellProps> = ({
             <div className="relative z-10 flex h-16 flex-shrink-0 border-b border-gray-200 bg-white shadow-sm">
               <button
                 type="button"
-                className={`border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset ${ShellColors[variant].buttonFocus} md:hidden`}
+                className={`border-r border-gray-200 px-4 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset ${Theme[variant].focusRing} md:hidden`}
                 onClick={() => setMobileMenuOpen(true)}
               >
                 <span className="sr-only">{screenReaderTexts.openSidebar}</span>

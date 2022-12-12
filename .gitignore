@@ -48,3 +48,7 @@ Thumbs.db
 **/public/workbox-*.js
 **/public/sw.js
 **/public/fallback-*.js
+
+
+# secrets
+.env
