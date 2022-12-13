@@ -1,4 +1,4 @@
-# Hear
+# Notes
 
 ## Demo
 
@@ -28,13 +28,16 @@
 
 ## Structure
 
-There are more connections than are actually happening in runtime. It would be nice if nx could generate a diagram of the runtime connections.
-The lines also include type-only imports. A lot of these cannot be put into a separate repo since the types are declared via `typeof` on a runtime import.
-
 - The app is called songs.
 - It has a feature library with some packages.
 
 [![graph](./graphs/graph_ungrouped.png)](./graphs/graph_ungrouped.png)
+
+Note:
+
+There are more connections between apps and libs containers than are actually existing at runtime. The lines also should type-only compile time imports. It would be nice if nx could generate a diagram of the runtime connections (I think they are working on it).
+
+A lot of these cannot be put into a separate repo since the types are declared via `typeof` on a runtime import. TRPC especially requires that you use `typeof` on runtime code to extract much more specific types than you can get from standalone type declarations.
 
 ## TODO
 
@@ -42,7 +45,7 @@ The lines also include type-only imports. A lot of these cannot be put into a se
 - Write out e2e / integration tests
 - Add perf checks / code coverage to CI/CD
 
-## Notes
+## Observations
 
 - Tailwind is more performant than css-in-js, but the verbose syntax is hard to get used to.
 - Naming stuff in a monorepo is hard.
@@ -64,11 +67,3 @@ These points cannot be easily mitigated until storybook updates their dependenci
 ## Understand this workspace
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
-
-## Remote caching
-
-Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
