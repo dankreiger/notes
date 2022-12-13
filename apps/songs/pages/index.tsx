@@ -1,10 +1,10 @@
-import { AudioPlayer, Heading, Theme, ThemeVariant } from '@notes/shared/ui';
-import { songsAppTrpcClient as trpc } from '@notes/songs/trpc-client';
 import {
   ChatBubbleLeftIcon,
   HandThumbUpIcon,
   HeartIcon,
 } from '@heroicons/react/24/outline';
+import { AudioPlayer, Heading, Theme, ThemeVariant } from '@notes/shared/ui';
+import { songsAppTrpcClient as trpc } from '@notes/songs/trpc-client';
 import Image from 'next/image';
 import { useEffect, useReducer } from 'react';
 import { getImageDimensions, likeCountReducer } from '../utils';
@@ -12,7 +12,8 @@ import styles from './index.module.css';
 
 export function Index({ themeVariant }: { themeVariant: ThemeVariant }) {
   const { data: trendingSongs = [], error } = trpc.song.getTrending.useQuery();
-  const { mutate: likeSong } = trpc.song.like.useMutation();
+  const { mutate: likeSong, isLoading: likeInProgress } =
+    trpc.song.like.useMutation();
 
   const [likeDict, dispatch] = useReducer(likeCountReducer, {});
 
@@ -78,6 +79,7 @@ export function Index({ themeVariant }: { themeVariant: ThemeVariant }) {
                   <div>
                     <button
                       type="button"
+                      disabled={likeInProgress}
                       className={`inline-flex items-center rounded-md border border-transparent ${Theme[themeVariant].button}  transition px-3 py-2 text-sm font-sm text-white shadow-sm focus:outline-none `}
                       onClick={() => {
                         likeSong({ id: song.id });
