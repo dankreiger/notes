@@ -31,7 +31,7 @@
 - The app is called songs.
 - It has a feature library with some packages.
 
-[![graph](./graphs/graph_ungrouped.png)](./graphs/graph_ungrouped.png)
+[![graph](./graph_ungrouped.png)](./graph_ungrouped.png)
 
 Note:
 
