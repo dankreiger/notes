@@ -54,7 +54,7 @@ The lines also include type-only imports. A lot of these cannot be put into a se
 
 ```sh
 npm install
-npm run dev
+npm run dev # note if you want to run storybook, you may have to use node 16 instead of 18
 
 # follow the prompt
 ```
