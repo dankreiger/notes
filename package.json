@@ -35,7 +35,7 @@
     "react-dom": "18.2.0",
     "react-h5-audio-player": "^3.8.6",
     "react-i18next": "^12.1.1",
-    "regenerator-runtime": "0.13.7",
+    "regenerator-runtime": "0.14.1",
     "tslib": "^2.3.0",
     "zod": "^3.19.1"
   },
