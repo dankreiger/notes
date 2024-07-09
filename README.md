@@ -33,17 +33,17 @@
 
 [![graph](./graph_ungrouped.png)](./graph_ungrouped.png)
 
-Note:
+## Note
 
-There are more connections between apps and libs containers than are actually existing at runtime. The lines also should type-only compile time imports. It would be nice if nx could generate a diagram of the runtime connections (I think they are working on it).
+There are more connections between apps and libs containers than are actually existing at runtime. The lines between components also show type-only compile time imports. It would be nice if nx could generate a diagram of the runtime connections (I think they are working on it).
 
 A lot of these cannot be put into a separate repo since the types are declared via `typeof` on a runtime import. TRPC especially requires that you use `typeof` on runtime code to extract much more specific types than you can get from standalone type declarations.
 
 ## TODO
 
-- Add i18n routing into Next.js app
 - Write out e2e / integration tests
 - Add perf checks / code coverage to CI/CD
+- Make audio player a bit nicer looking
 
 ## Observations
 
